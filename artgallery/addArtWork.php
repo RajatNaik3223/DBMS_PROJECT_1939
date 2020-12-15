@@ -9,14 +9,14 @@ include('navbar.php')
     <div class=" justify-content-center bg-light p-5 mx-5">
     <h2 class="text-center">Add Artwork</h2>
     <div class="container-fluid">
-    <form action="#" method="POST" class="justify-content-center">
+    <form action="addArtWork.php" method="POST" class="justify-content-center" enctype="multipart/form-data"> 
      <div class="form-group">
        <label for="text">Art Name</label>
        <input type="text" class="form-control"  id="text" placeholder="Enter Art Name " name="artName">
       </div>
       <div class="form-group">
        <label for="file">Select file:</label>
-       <input type="file" class="form-control" id="file" placeholder="select file" name="selectFile">
+       <input type="file" class="form-control" id="file" placeholder="select file" name="image">
       </div> 
       <div class="form-group">
        <label for="text">Year of making</label>
@@ -48,17 +48,32 @@ include('connection.php');
 if(isset($_POST['submit']))
 {
      $artname=$_POST['artName'];  
-     $file=$_POST['selectFile'];
+     
      $year=$_POST['year'];
     $price=$_POST['price']; 
+    $file=$_FILES['image'];
+    
+    $imageName=$_FILES['image']['name'];
+    $imageTmpName=$_FILES['image']['tmp_name'];
+    $iamgeSize=$_FILES['image']['size'];
+    $imageType=$_FILES['image']['type'];
+    $imageExt=explode('.',$imageName);
 
-    $sql= "INSERT INTO `artwork` (`Art_name` , `Art_url` , `Year_of_making` , `price` ) values('$artname' , '$file' , '$year' , '$price' )";
+    $imageActualExt=strtolower(end($imageExt));
+    $newImageName=$imageName.".".$imageActualExt;
+    $target= "art/".$imageName;
+
+    $sql= "INSERT INTO `artwork` (`Art_name` , `Art_url` , `Year_of_making` , `price` ) values('$artname' , '$target' , '$year' , '$price' )";
     $result=mysqli_query($con,$sql);
     if(!$result)
     {
         echo"<script>alert('Record was not inserted');location.href='addArtWork.php';</script>";
     }  
     else{
+       move_uploaded_file($imageTmpName,$target);
+       //  alert("file not uploaded");
+       
+
         $artid=mysqli_insert_id($con);
         $aid=$_SESSION['aId'];
         $res=mysqli_query($con,"INSERT INTO `created_by` (`artist_id` , `Art_id`) values('$aid' , '$artid')");

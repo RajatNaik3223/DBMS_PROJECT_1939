@@ -1,114 +1,73 @@
+
+ <!DOCTYPE html>
+
+
 <?php
-//session_start();
+include('navbar.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css" class="css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Patrick+Hand&display=swap" rel="stylesheet">
+<section class="my-5px">
+            <div class="py-3">
+            <h3 class="text-center">Art Work</h3>
 
-
-</head>
-<body>
-    
-<?php
-include'navbar.php';?>
-
-
-
-      <section class="my-5px">
-        <div class="py-3">
-          <h3 class="text-center">Art Work</h3>
-        </div>
+            </div>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
+<?php
+include('connection.php');
+
+$sql="select * from artwork";
+$query = mysqli_query($con,$sql);
+//$row = mysqli_num_rows($query);
+while($elem=mysqli_fetch_assoc($query)){
+$url=$elem['Art_url'];
+$name=$elem['Art_name'];
+$year=$elem['Year_of_making'];
+$price=$elem['Price'];
+$id=$elem['Art_id'];
+
+
+     $sql1="select `name`,`Last_name` from `artist`where `artist_id` in (select artist_id from `created_by` join `artwork` on `created_by`.`Art_id`=`artwork`.`Art_id` where `created_by`.`Art_id`='$id')";
+     $result=mysqli_query($con,$sql1);  
+     while($row=mysqli_fetch_assoc($result))
+     {   
+     $Aname=$row['name'];
+     $lastname=$row['Last_name'];
+    // $id=$row['artist_id'];
+     }
+?>
+       
+         
+             <div class="col-lg-4  col-md-4 col-12 pb-4">
+              <img src="<?php echo $url?>" alt="image" class="img-fluid pb-3">
+              <h4 class="card-title"><?php //echo $name.$lastname?></h4>
+              <p class="card-text"><?php echo"Art Name :".$name ?></br>
+                                    <?php echo"Art By :".$Aname." ".$lastname ?></br>
+                                    <?php echo" Created On :".$year ?> </br>
+                                    <?php echo" Price ;".$price ?>   
+                
+                
+                </p>
+              <a href="Profile.php" class="btn btn-primary">See Profile</a>   
             </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-    
-            </div>
-            <!-- <div class="col-lg-4  col-md-4 col-12">
-              <img src="images/img3.jpg" alt="image" class="img-fluid pb-3">
-            </div> -->
-          </div>
+         
+<?php
+}
+?>
+   </div>
         </div>
     
       </section>
-    
-
-
-
 
       <footer class="p-2 bg-dark text-light text-center">
         <p>artgallery@art.com</p>
     
         </footer>
-
-
-
-       
 </body>
 </html>
+
+
+
+
+
+
 
