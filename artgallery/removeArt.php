@@ -64,6 +64,7 @@ if(isset($_POST['remove']))
    <th>delete</th>   
    </tr>
    </tfoot>
+   </table>
    </br>
    </br>
    </br>

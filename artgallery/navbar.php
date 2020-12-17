@@ -45,6 +45,7 @@ session_start();
             ?>
              <!-- <a href="http://localhost/artgallery/Artists.php">Artist</a> -->
             <a href="http://localhost/artgallery/addArtWork.php">Add Artwork</a>
+            <a href="http://localhost/artgallery/updateArtinfo.php">Update Artwork information</a>
             <a href="http://localhost/artgallery/removeArt.php">remove artwork</a>
             <a href="#">Contact</a>
             <?php

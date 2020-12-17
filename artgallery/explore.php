@@ -56,7 +56,7 @@ $id[$i]=$elem['Art_id'];
                  $custid=$_SESSION['cId'];                
                 ?>
               <form action="explore.php" method="post">
-              <input type="submit" value="place order" name="<?php echo$i;?>"/>
+              <input type="submit" value="place order" name="<?php echo$i;?>"  class="btn btn-primary"/>
               </form>
             
                 <?php }?>
@@ -93,14 +93,6 @@ $j=0;
 }
 ?>
 
-
-
-
-
-
-
-
-?>
    </div>
         </div>
     
