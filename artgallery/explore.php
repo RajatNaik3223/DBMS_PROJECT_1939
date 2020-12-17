@@ -18,40 +18,77 @@ include('connection.php');
 $sql="select * from artwork";
 $query = mysqli_query($con,$sql);
 //$row = mysqli_num_rows($query);
+$i=0;
+$count=0;
 while($elem=mysqli_fetch_assoc($query)){
-$url=$elem['Art_url'];
-$name=$elem['Art_name'];
-$year=$elem['Year_of_making'];
-$price=$elem['Price'];
-$id=$elem['Art_id'];
+
+$url[$i]=$elem['Art_url'];
+$name[$i]=$elem['Art_name'];
+$year[$i]=$elem['Year_of_making'];
+$price[$i]=$elem['Price'];
+$id[$i]=$elem['Art_id'];
 
 
-     $sql1="select `name`,`Last_name` from `artist`where `artist_id` in (select artist_id from `created_by` join `artwork` on `created_by`.`Art_id`=`artwork`.`Art_id` where `created_by`.`Art_id`='$id')";
+     $sql1="select `name`,`Last_name` from `artist` where `artist_id` in (select artist_id from `created_by` join `artwork` on `created_by`.`Art_id`=`artwork`.`Art_id` where `created_by`.`Art_id`='$id[$i]')";
      $result=mysqli_query($con,$sql1);  
      while($row=mysqli_fetch_assoc($result))
      {   
-     $Aname=$row['name'];
-     $lastname=$row['Last_name'];
+       $count++;
+     $Aname[$i]=$row['name'];
+     $lastname[$i]=$row['Last_name'];
     // $id=$row['artist_id'];
      }
 ?>
        
          
              <div class="col-lg-4  col-md-4 col-12 pb-4">
-              <img src="<?php echo $url?>" alt="image" class="img-fluid pb-3">
+              <img src="<?php echo $url[$i]?>" alt="image" class="img-fluid pb-3">
               <h4 class="card-title"><?php //echo $name.$lastname?></h4>
-              <p class="card-text"><?php echo"Art Name :".$name ?></br>
-                                    <?php echo"Art By :".$Aname." ".$lastname ?></br>
-                                    <?php echo" Created On :".$year ?> </br>
-                                    <?php echo" Price ;".$price ?>   
+              <p class="card-text">
+              <?php echo"Art Name :".$name[$i] ?></br>
+              <?php echo"Art By :".$Aname[$i]." ".$lastname[$i] ?></br>
+              <?php echo" Created On :".$year[$i] ?> </br>
+               <?php echo" Price ;".$price[$i] ?>   
                 
                 
                 </p>
-              <a href="Profile.php" class="btn btn-primary">See Profile</a>   
+                <?php if(isset($_SESSION['is']) && $_SESSION['is']=='cust')
+                {
+                 $custid=$_SESSION['cId']; ?>
+
+              <!-- <a href="Profile.php" class="btn btn-primary"></a>    -->
+              <form action="#" method="post">
+              <input type="submit" value="place order" name="<?php echo$i;?>"/>
+              </form>
+            
+                <?php }?>
             </div>
          
 <?php
+$i++;
 }
+$j=0;
+  for($j=0;$j<$count;$j++)
+  {
+    if(isset($_POST[$j])){
+      $sql2="insert into `bought_by`(`Art_id`,`cust_id`)values('$id[$j]','$custid')";
+      $q=mysqli_query($con,$sql2);
+      if($q){
+       echo "<script>alert('placing order');location.href='explore.php'; </script>";
+        $sql3="update `customer` set amt_spent=(amt_spent +'$price[$j]') where cust_id='$custid'";
+        if($q2=mysqli_query($con,$sql3)){
+          mysqli_error($q2);
+        } 
+
+      }
+    else{
+      echo "<script>alert('cannot place order');location.href='explore.php'; </script>";
+      continue;
+
+    }
+
+    }
+  }
 ?>
    </div>
         </div>

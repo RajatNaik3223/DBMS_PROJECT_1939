@@ -28,12 +28,15 @@ session_start();
 
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <?php
-            if($_SESSION['is']=="cust")
+            if(!isset($_SESSION['is']))
+            {
+              echo"<a href='#'>Contact</a>";
+            }
+            else if($_SESSION['is']=="cust")
             {
             ?>
-            <a href="http://localhost/artgallery/Artists.php">Artist</a>
-            <a href="#">Art Style</a>
-            <a href="#">Buy Artpiece</a>
+            <!-- <a href="http://localhost/artgallery/Artists.php">Artist</a> -->
+            <a href="#">About Us</a>
             <a href="#">Contact</a>
             <?php
 

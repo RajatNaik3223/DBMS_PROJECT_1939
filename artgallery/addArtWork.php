@@ -36,7 +36,7 @@ include('navbar.php')
       
     </form>
    <br>
-    <h5>OR  <a href="Custsignup.php">create account</a></h5>
+    <!-- <h5>OR  <a href="Custsignup.php">create account</a></h5> -->
 
   </div>
 </div>

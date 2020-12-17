@@ -36,10 +36,10 @@ $id=$elem['Art_id'];
 ?>
        
          
-             <div class="col-lg-4  col-md-4 col-12 pb-4">
+              <div class="col-lg-4  col-md-4 col-12 pb-4">
               <img src="<?php echo $url?>" alt="image" class="img-fluid pb-3">
-              <h4 class="card-title"><?php //echo $name.$lastname?></h4>
-              <p class="card-text"><?php echo"Art Name :".$name ?></br>
+              <h4 class="card-title"><?php echo"Art Name :".$name ?></h4>
+              <p class="card-text">
                                     <?php echo"Art By :".$Aname." ".$lastname ?></br>
                                     <?php echo" Created On :".$year ?> </br>
                                     <?php echo" Price ;".$price ?>   

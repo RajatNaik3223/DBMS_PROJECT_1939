@@ -75,7 +75,7 @@ if(isset($_POST['submit']))
 {
     $username = $_POST["user"];
     $password = $_POST["pass"];
-        $sql="select username,password,name from customer where username = '$username' and password = '$password'";
+        $sql="select username,password,name,cust_id from customer where username = '$username' and password = '$password'";
         $query = mysqli_query($con,$sql);
         $row = mysqli_num_rows($query);
         if($row == 1)
@@ -85,12 +85,14 @@ if(isset($_POST['submit']))
                $dbpassword=$elem['password'];
                $_SESSION['user_logged_in']='true';
                $name=$elem['name'];
+               $cid=$elem['cust_id'];
                $_SESSION['uname']=$name;
            }
            if($username==$dbusername && $password==$dbpassword){
                $_SESSION['user']=$username;
+              
                $_SESSION['is']="cust";
-             
+               $_SESSION['cId']=$cid;
               // header('location: index.php');
                echo"<script>alert('login successful');location.href='index.php';</script>";
            }
@@ -98,6 +100,7 @@ if(isset($_POST['submit']))
            {
               echo"<script>alert('login failed');location.href='login.php';</script>";
             // header('location: login.php');
+              $_SESSION['is']=null;
            
              }
         
