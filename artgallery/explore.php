@@ -17,7 +17,6 @@ include('connection.php');
 
 $sql="select * from artwork";
 $query = mysqli_query($con,$sql);
-//$row = mysqli_num_rows($query);
 $i=0;
 $count=0;
 while($elem=mysqli_fetch_assoc($query)){
@@ -54,10 +53,9 @@ $id[$i]=$elem['Art_id'];
                 </p>
                 <?php if(isset($_SESSION['is']) && $_SESSION['is']=='cust')
                 {
-                 $custid=$_SESSION['cId']; ?>
-
-              <!-- <a href="Profile.php" class="btn btn-primary"></a>    -->
-              <form action="#" method="post">
+                 $custid=$_SESSION['cId'];                
+                ?>
+              <form action="explore.php" method="post">
               <input type="submit" value="place order" name="<?php echo$i;?>"/>
               </form>
             
@@ -67,28 +65,41 @@ $id[$i]=$elem['Art_id'];
 <?php
 $i++;
 }
+$_SESSION['count']=$count;
+
+
 $j=0;
   for($j=0;$j<$count;$j++)
   {
     if(isset($_POST[$j])){
-      $sql2="insert into `bought_by`(`Art_id`,`cust_id`)values('$id[$j]','$custid')";
-      $q=mysqli_query($con,$sql2);
-      if($q){
-       echo "<script>alert('placing order');location.href='explore.php'; </script>";
-        $sql3="update `customer` set amt_spent=(amt_spent +'$price[$j]') where cust_id='$custid'";
+     $_SESSION['Aid']=$id[$j];
+       $sql2="insert into `bought_by`(`Art_id`,`cust_id`)values('$id[$j]','$custid')";
+        $q=mysqli_query($con,$sql2);
+        if($q){
+            echo "<script>alert('placing order');location.href='reciept.php'; </script>";
+            $sql3="update `customer` set amt_spent=(amt_spent +'$price[$j]') where cust_id='$custid'";
         if($q2=mysqli_query($con,$sql3)){
-          mysqli_error($q2);
-        } 
 
-      }
-    else{
-      echo "<script>alert('cannot place order');location.href='explore.php'; </script>";
-      continue;
-
+          
+         } 
+       }
+       
+        else{
+            echo "<script>alert('cannot place order');location.href='explore.php'; </script>";
+             continue;
+        }
     }
 
-    }
-  }
+}
+?>
+
+
+
+
+
+
+
+
 ?>
    </div>
         </div>
