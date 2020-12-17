@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Signup</title>
+        <title>Page Title - SB Admin</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -18,7 +18,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Customer Account</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Artist Account</h3></div>
                                     <div class="card-body">
                                         <form method="post">
                                             <div class="form-row">
@@ -31,15 +31,15 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputLastName">Last Name</label>
-                                                        <input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name"  name="lname" />
+                                                        <input class="form-control py-4" id="inputLastName" type="text" placeholder="Enter last name" name="lname" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Address</label>
-                                                <input class="form-control py-4" id="inputAddress" type="text"  placeholder="Enter address" name="add" />
-                                            </div>
-                                            <div class="form-group">
+
+                                            <label class="small mb-1" >Address</label>
+                                                <input class="form-control py-4" id="inputEmailAddress" type="text"  placeholder="Enter address" name="add" />
+
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
                                                 <input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Enter email address" name="email" />
                                             </div>
@@ -47,7 +47,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputPassword">Password</label>
-                                                        <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="pass" />
+                                                        <input class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" name="pass"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -58,17 +58,25 @@
                                                 </div>
                                                 </div>
                                             <div class="form-row">
-                                                
                                                 <div class="col-md-6">
-                                                    <div class="form-group"> 
-                                                      <a href="Artistsignup.php"class="p-1">OR register as Artist</a>
+                                                    <div class="form-group">
+                                                       
+                                                        <!-- <input  type="radio"  name="Signup" value="customer" />
+                                                        <label class="mb-1 mx-3" >Customer</label> -->
+                                                        <a href="Custsignup.php"class="p-1">OR register as Customer</a>
                                                     </div>
-                                                </div>  
+                                                <!-- </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input   type="radio" name="Signup" value="artist"/>
+                                                    <label class="mb-1" >Artist</label>
+                                                    </div>
+                                                </div>                        -->
+
+
+                                            </div>
                                             <div class="form-group mt-5 mb-0">
-                                                <!-- <a class="btn btn-primary btn-block " href="#" name="submit">Create Account</a> -->
-                                                <input type="submit" value="Create Account" name="submit" class="btn btn-primary btn-block "/>
-                                            
-                                            
+                                            <input type="submit" value="Create Account" name="submit" class="btn btn-primary btn-block "/>
                                             </div>
                                         </form>
                                     </div>
@@ -128,29 +136,26 @@ if(isset($_POST["submit"]))
     //  $q="select username from customer where username = '$email'";
     //  $sq=mysqli_query($con,$sq);
     //  $r=mysqli_num_rows($sq);
-    //  if($r>1)
+    //  if($r>=1)
     //  {
        
-    //     echo"<script>alert('Username not avaialbe');location.href='Custsignup.php';</script>";
+    //     echo"<script>alert('Username not avaialbe');location.href='Artistsignup.php';</script>";
     // }
-
-    $sql= "INSERT INTO `customer` (`name` , `Last_name` , `address` , `username` , `password`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password')";
+    
+    $sql= "INSERT INTO `artist` (`name` , `Last_name` , `address` , `username` , `password`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password')";
     // $sql= "insert into `customer` (`name` , `Last_name` , `address` , `username` , `password`,`amt_spent`) values('tgds' , 'aasdgh' , 'asdfg' , 'rajat1234' , '1234' , 0)";
     $result=mysqli_query($con,$sql);
     if (!$result)
     {
        
-        echo"<script>alert('Signup failed');location.href='Custsignup.php';</script>";
+        echo"<script>alert('Signup failed');location.href='Artistsignup.php';</script>";
 
     } 
     else
     {
         // $_SESSION['user_logged_in']=true;
         // $_SESSION['uname']=$_fname;
-        
-            echo"<script>alert('Sign Up successfull');location.href='http://localhost/artgallery/index.php';</script>";
-        
-        
+        echo"<script>alert('user added successfully');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
         
  
     }

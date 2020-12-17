@@ -58,12 +58,7 @@
                                                 </div>
                                                 </div>
                                             <div class="form-row">
-                                                
-                                                <div class="col-md-6">
-                                                    <div class="form-group"> 
-                                                      <a href="Artistsignup.php"class="p-1">OR register as Artist</a>
-                                                    </div>
-                                                </div>  
+                                             
                                             <div class="form-group mt-5 mb-0">
                                                 <!-- <a class="btn btn-primary btn-block " href="#" name="submit">Create Account</a> -->
                                                 <input type="submit" value="Create Account" name="submit" class="btn btn-primary btn-block "/>
@@ -148,7 +143,7 @@ if(isset($_POST["submit"]))
         // $_SESSION['user_logged_in']=true;
         // $_SESSION['uname']=$_fname;
         
-            echo"<script>alert('Sign Up successfull');location.href='http://localhost/artgallery/index.php';</script>";
+            echo"<script>alert('Sign Up successfull');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
         
         
         

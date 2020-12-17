@@ -36,8 +36,9 @@ session_start();
             {
             ?>
             <!-- <a href="http://localhost/artgallery/Artists.php">Artist</a> -->
-            <a href="#">About Us</a>
-            <a href="#">Contact</a>
+            <a href="Custlogin.php">Log in</a>
+            <a href="Custsignup.php">Sign up</a>
+            <a href="contactUs.php">Contact</a>
             <?php
 
             }else

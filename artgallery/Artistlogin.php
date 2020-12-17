@@ -88,9 +88,16 @@ if(isset($_POST['submit']))
                $_SESSION['user']=$username;
                $_SESSION['is']="artist";
                
-             
+               $sql2="INSERT into activity_log(identity,remark)values('Artist','logged in')";
+              $q=mysqli_query($con,$sql2);
               // header('location: index.php');
                echo"<script>alert('login successful');location.href='index.php';</script>";
+
+             
+
+
+
+
            }
            else
            {
@@ -101,6 +108,9 @@ if(isset($_POST['submit']))
         
         }
  }
+
+
+
 
 
 

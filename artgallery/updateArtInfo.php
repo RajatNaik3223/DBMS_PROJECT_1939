@@ -123,6 +123,9 @@ if(isset($_POST['update'])){
 
     $q=mysqli_query($con,$sql1);
     if($q){
+        $sql2="INSERT into activity_log(identity,remark)values('Artist','Updated art info')";
+        $q1=mysqli_query($con,$sql2);
+
         echo"<script>alert('information updated');location.href='updateArtinfo.php'</script>";
     }
     else{

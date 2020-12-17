@@ -49,7 +49,13 @@ if(isset($_POST['remove']))
      $sql1="delete from `artwork` where `Art_name`='$named' and `Year_of_making`='$yearD'";
      $query1=mysqli_query($con,$sql1);
      if($query1){
-        echo"<script>alert('Artwork Removed');location.href='removeArt.php';</script>";
+     
+     
+      $sql2="INSERT into activity_log(identity,remark)values('Artist','removed art piece')";
+      $q1=mysqli_query($con,$sql2);
+      
+      
+      echo"<script>alert('Artwork Removed');location.href='removeArt.php';</script>";
      }
     }
 

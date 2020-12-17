@@ -94,6 +94,10 @@ if(isset($_POST['submit']))
                $_SESSION['is']="cust";
                $_SESSION['cId']=$cid;
               // header('location: index.php');
+
+              $sql2="INSERT into activity_log(identity,remark)values('Customer','logged in')";
+              $q=mysqli_query($con,$sql2);
+
                echo"<script>alert('login successful');location.href='index.php';</script>";
            }
            else

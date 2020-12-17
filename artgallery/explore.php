@@ -76,6 +76,12 @@ $j=0;
        $sql2="insert into `bought_by`(`Art_id`,`cust_id`)values('$id[$j]','$custid')";
         $q=mysqli_query($con,$sql2);
         if($q){
+
+          $sql4="INSERT into activity_log(identity,remark)values('Customer','purchased art piece')";//activity log
+          $q3=mysqli_query($con,$sql4;
+
+
+
             echo "<script>alert('placing order');location.href='reciept.php'; </script>";
             $sql3="update `customer` set amt_spent=(amt_spent +'$price[$j]') where cust_id='$custid'";
         if($q2=mysqli_query($con,$sql3)){
