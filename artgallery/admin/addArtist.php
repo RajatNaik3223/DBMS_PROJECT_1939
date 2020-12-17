@@ -147,8 +147,11 @@ if(isset($_POST["submit"]))
     $result=mysqli_query($con,$sql);
     if (!$result)
     {
+
+        $sql3="INSERT into activity_log(identity,remark)values('Admin','Artist added')";//activity log
+        $q2=mysqli_query($con,$sql3);
        
-        echo"<script>alert('Signup failed');location.href='Artistsignup.php';</script>";
+        echo"<script>alert('Signup failed');location.href='addArtist.php';</script>";
 
     } 
     else

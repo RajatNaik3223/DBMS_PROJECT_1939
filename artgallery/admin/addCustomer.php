@@ -20,7 +20,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Customer Account</h3></div>
                                     <div class="card-body">
-                                        <form method="post">
+                                        <form method="post" action="Dashboard.php">
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -67,9 +67,9 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center">
+                                    <!-- <div class="card-footer text-center">
                                         <div class="small"><a href="login.html">Have an account? Go to login</a></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -120,36 +120,26 @@ if(isset($_POST["submit"]))
     $email = $_POST["email"];
     $password = $_POST["pass"];
     $conpass = $_POST["confpass"];
-    //  $q="select username from customer where username = '$email'";
-    //  $sq=mysqli_query($con,$sq);
-    //  $r=mysqli_num_rows($sq);
-    //  if($r>1)
-    //  {
-       
-    //     echo"<script>alert('Username not avaialbe');location.href='Custsignup.php';</script>";
-    // }
+    
+    
 
     $sql= "INSERT INTO `customer` (`name` , `Last_name` , `address` , `username` , `password`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password')";
-    // $sql= "insert into `customer` (`name` , `Last_name` , `address` , `username` , `password`,`amt_spent`) values('tgds' , 'aasdgh' , 'asdfg' , 'rajat1234' , '1234' , 0)";
+    
     $result=mysqli_query($con,$sql);
     if (!$result)
     {
+
+        $sql3="INSERT into activity_log(identity,remark)values('Admin','Customer added')";//activity log
+        $q2=mysqli_query($con,$sql3);
        
-        echo"<script>alert('Signup failed');location.href='Custsignup.php';</script>";
+        echo"<script>alert('User was not added');location.href='addCustomer.php';</script>";
 
     } 
     else
     {
-        // $_SESSION['user_logged_in']=true;
-        // $_SESSION['uname']=$_fname;
         
-            echo"<script>alert('Sign Up successfull');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
-        
-        
-        
- 
+       echo"<script>alert('User added successfully');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
     }
-    echo "hello";
 }      
 
 ?>

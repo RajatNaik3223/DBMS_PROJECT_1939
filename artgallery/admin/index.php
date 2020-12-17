@@ -101,7 +101,7 @@ if(isset($_POST['submit']))
 
             }
             if($username==$dbusername && $password==$dbpassword){
-                $_SESSION['user']=$username;
+                $_SESSION['adminUser']=$dbusername;
                 //header('location: Dashboard.html');
                 $_SESSION['admin']=true;
                 echo"<script>alert('login successful');location.href='Dashboard.php';</script>";

@@ -53,7 +53,7 @@
                 <td><?php echo$name[$i]?></td>
                 <td><?php echo$lname[$i] ?></td>
                 <td><?php echo$add[$i] ?></td>
-                <td> <form action="removeArtist.php" method="post" > <input type="submit" value="Remove" name="<?php echo$i ?>"></form> </a></td>
+                <td> <form action="removeArtist.php" method="post" > <input class="btn btn-primary" type="submit" value="Remove" name="<?php echo$i ?>"></form> </a></td>
                 </tr>
                 <?php 
                 $i++;
