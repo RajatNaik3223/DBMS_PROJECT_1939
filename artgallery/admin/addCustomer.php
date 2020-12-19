@@ -123,7 +123,7 @@ if(isset($_POST["submit"]))
     
     
 
-    $sql= "INSERT INTO `customer` (`name` , `Last_name` , `address` , `username` , `password`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password')";
+    $sql= "INSERT INTO `customer` (`name` , `Last_name` , `address` , `username` , `password`,`profileIMG`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password','')";
     
     $result=mysqli_query($con,$sql);
     if (!$result)

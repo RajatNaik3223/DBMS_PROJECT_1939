@@ -142,20 +142,22 @@ if(isset($_POST["submit"]))
     //     echo"<script>alert('Username not avaialbe');location.href='Artistsignup.php';</script>";
     // }
     
-    $sql= "INSERT INTO `artist` (`name` , `Last_name` , `address` , `username` , `password`) values('$firstn' , '$lastn' , '$add' , '$email' , '$password')";
+    $sql= "INSERT INTO `artist` (`name` , `Last_name` , `address` ,`profileIMG` , `username` , `password`) values('$firstn' , '$lastn' , '$add' ,'', '$email' , '$password')";
     // $sql= "insert into `customer` (`name` , `Last_name` , `address` , `username` , `password`,`amt_spent`) values('tgds' , 'aasdgh' , 'asdfg' , 'rajat1234' , '1234' , 0)";
     $result=mysqli_query($con,$sql);
     if (!$result)
     {
 
-        $sql3="INSERT into activity_log(identity,remark)values('Admin','Artist added')";//activity log
-        $q2=mysqli_query($con,$sql3);
-       
+        
         echo"<script>alert('Signup failed');location.href='addArtist.php';</script>";
 
     } 
     else
     {
+
+        $sql3="INSERT into activity_log(identity,remark)values('Admin','Artist added')";//activity log
+        $q2=mysqli_query($con,$sql3);
+       
         // $_SESSION['user_logged_in']=true;
         // $_SESSION['uname']=$_fname;
         echo"<script>alert('user added successfully');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
