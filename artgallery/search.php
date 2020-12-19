@@ -19,6 +19,8 @@ if (isset($_POST['search'])) {
 
 
 ?>
+
+<div class="row justify-content-center p-3"> Showing result for <?php echo $search?></div>
             <div class="col-lg-4  col-md-4 col-12 pb-4 position-static  rounded-lg ">
                 <div class="card container-sm">
                     <!-- <div class="view overlay hm-white-slight"> -->
@@ -45,10 +47,14 @@ if (isset($_POST['search'])) {
     }
 
 
-    if ($num_rows2 == 1) {
-        while ($row2 = mysqli_fetch_assoc($result2)) {
-            $name
-        }
-    }
+    // if ($num_rows2 == 1) {
+    //     while ($row2 = mysqli_fetch_assoc($result2)) {
+    //         $name
+    //     }
+    // }
 }
+
+
+include('footer.php');
 ?>
+

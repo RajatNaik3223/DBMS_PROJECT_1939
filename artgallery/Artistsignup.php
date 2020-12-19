@@ -24,7 +24,7 @@
                                     <h3 class="text-center font-weight-light my-4">Create Artist Account</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post">
+                                    <form method="post" enctype="multipart/form-data">
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -184,6 +184,7 @@ if (isset($_POST["submit"])) {
     } else {
         // $_SESSION['user_logged_in']=true;
         // $_SESSION['uname']=$_fname;
+        move_uploaded_file($imageTmpName, $target);
         echo "<script>alert('Sign Up successfull');location.href='http://localhost/artgallery/index.php';</script>";
     }
     echo "hello";

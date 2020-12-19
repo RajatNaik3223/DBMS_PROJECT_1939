@@ -60,13 +60,15 @@
             <!--Grid column-->
         </div>
         <!--Grid row-->
+        <?php if(isset($_SESSION['cId']) ||isset($_SESSION['aId']) )
+            { ?>
         <div>
-
+            
             <a href="Custsignup.php" class="btn btn-important">Sign Up</a>
             <a href="Custslogin.php" class="btn btn-inportant">Sign in</a>
-
+            
         </div>
-
+        <?php }?>
     </div>
     <!-- Grid container -->
 

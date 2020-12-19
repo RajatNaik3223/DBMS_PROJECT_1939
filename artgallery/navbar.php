@@ -43,6 +43,8 @@ session_start();
         // echo "<a href='contactUs.php'>Contact</a>";
       } else if ($_SESSION['is'] == "cust") {
       ?>
+
+        <a href="profile.php">Profile</a>
         <a href="contactUs.php">Contact</a>
         <!-- <a href="http://localhost/artgallery/Artists.php">Artist</a> -->
 
@@ -51,6 +53,7 @@ session_start();
       } else {
       ?>
         <!-- <a href="http://localhost/artgallery/Artists.php">Artist</a> -->
+        <a href="profile.php">Profile</a>
         <a href="http://localhost/artgallery/addArtWork.php">Add Artwork</a>
         <a href="http://localhost/artgallery/updateArtinfo.php">Update Artwork information</a>
         <a href="http://localhost/artgallery/removeArt.php">remove artwork</a>
