@@ -2,6 +2,11 @@
 
 <?php include("navbar.php");
     include('../connection.php');
+
+
+   
+
+
     ?>
     <div id="layoutSidenav_content">
 <section class="my-5px">
@@ -22,18 +27,22 @@
                 </tr>
                 </thead>
                 <tfoot>
+              
                 <tr>
+
                 <th>ID</th>
                 <th>Name</th>
-               
-               
                 <th>Amount Spent</th>
+
                
                 </tr>
                 </tfoot>
 
                 <tbody>
                 <?php
+ 
+
+
                 $i=0;
                 $count=0;
                 $sql="select * from customer where amt_spent>0";
@@ -43,6 +52,7 @@
                     $id[$i]=$result['cust_id'];
                     $name[$i]=$result['name'];
                     $amt[$i]=$result['amt_spent'];
+                  //  $total=$result['total'];
 
                 
                 ?>

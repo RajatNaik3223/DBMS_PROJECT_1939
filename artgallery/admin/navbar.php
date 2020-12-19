@@ -1,6 +1,6 @@
 <?php
 session_start();
-$user=$_SESSION['adminUser'];
+//$user=$_SESSION['adminUser'];
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +74,8 @@ $user=$_SESSION['adminUser'];
                                 </a>
                                 <div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="http://localhost/artgallery/addCustomer.php">Add Users</a>
+                                        <!-- <a class="nav-link" href="http://localhost/artgallery/admin/displayCust.php">Viwe Users</a> -->
+                                        <a class="nav-link" href="http://localhost/artgallery/admin/addCustomer.php">Add Users</a>
                                         <a class="nav-link" href="http://localhost/artgallery/admin/removeUser.php">Remove Users</a>
                                     </nav>
                                 </div>
@@ -88,6 +89,7 @@ $user=$_SESSION['adminUser'];
                                 </a>
                                 <div class="collapse" id="collapseArtist" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                     <nav class="sb-sidenav-menu-nested nav">
+                                    <!-- <a class="nav-link" href="http://localhost/artgallery/admin/displayArtist.php">View Artists</a> -->
                                         <a class="nav-link" href="http://localhost/artgallery/admin/addArtist.php">Add Artists</a>
                                         <a class="nav-link" href="http://localhost/artgallery/admin/removeArtist.php">Remove Artists</a>
                                     </nav>

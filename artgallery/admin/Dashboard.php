@@ -13,7 +13,7 @@ $r = mysqli_fetch_assoc($q);
 $activity = $r['act'];
 ?>
 <!-- <body class="sb-nav-fixed">  -->
-<?php include("navbar.php");
+<?php include('navbar.php');
 
 ?>
 

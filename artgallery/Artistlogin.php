@@ -46,7 +46,7 @@
       
     </form>
    <br>
-    <h5>OR  <a href="signup.php">create account</a></h5>
+    <h5>OR  <a href="Artistsignup.php">create account</a></h5>
 
   </div>
 </div>

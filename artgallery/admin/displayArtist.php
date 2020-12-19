@@ -1,6 +1,6 @@
 
     <?php //include("navbar.php");
-    //include('../connection.php');
+    include('../connection.php');
     ?>
     <div id="layoutSidenav_content">
 <section class="my-5px">

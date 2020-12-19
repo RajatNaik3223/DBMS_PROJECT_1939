@@ -6,11 +6,11 @@ if (isset($_POST['search'])) {
     $search = $_POST['searchtxt'];
     //$search = preg_replace('#[^0-9]#i', '', $_POST['searchtxt']);
     $query = "select * from artwork where Art_name like '%$search%'";
-    $query2 = "select * from artist where name like '%search%' or Last_name like '%$search%'";
+    //$query2 = "select * from artist where name like '%search%' or Last_name like '%$search%'";
     $result1 = mysqli_query($con, $query);
-    $result2 = mysqli_query($con, $query2);
+    //$result2 = mysqli_query($con, $query2);
     $num_rows = mysqli_num_rows($result1);
-    $num_rows2 = mysqli_num_rows($result2);
+    //$num_rows2 = mysqli_num_rows($result2);
     if ($num_rows == 1) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
             $url = $row1['Art_url'];

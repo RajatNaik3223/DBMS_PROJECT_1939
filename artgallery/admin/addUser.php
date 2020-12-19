@@ -129,15 +129,15 @@ if(isset($_POST["submit"]))
     if (!$result)
     {
 
-
+        $sql3="INSERT into activity_log(identity,remark)values('Admin','Customer added')";//activity log
+        $q2=mysqli_query($con,$sql3);
        
         echo"<script>alert('User was not added');location.href='addCustomer.php';</script>";
 
     } 
     else
     {
-        $sql3="INSERT into activity_log(identity,remark)values('Admin','Customer added')";//activity log
-        $q2=mysqli_query($con,$sql3);        
+        
        echo"<script>alert('User added successfully');location.href='http://localhost/artgallery/admin/Dashboard.php';</script>";
     }
 }      
