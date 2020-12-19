@@ -34,10 +34,10 @@
         <a href="Custlogin.php">Customer Login</a>
       </div>
 
-      <div class="form-group form-check">
+      <!-- <div class="form-group form-check">
           <label class="form-check-label">
           <input class="form-check-input" type="checkbox" name="remember"> Remember me
-      </label>
+      </label> -->
       </div>
       <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
       <button type="reset" class="btn btn-danger " name="reset"  href="#"> Reset</button>
@@ -92,21 +92,17 @@ if(isset($_POST['submit']))
               $q=mysqli_query($con,$sql2);
               // header('location: index.php');
                echo"<script>alert('login successful');location.href='index.php';</script>";
-
-             
-
-
-
-
            }
-           else
+           
+        
+        }
+        else
            {
-              echo"<script>alert('login failed');location.href='login.php';</script>";
+              echo"<script>alert('login failed');location.href='Artistlogin.php';</script>";
             // header('location: login.php');
            
              }
-        
-        }
+
  }
 
 

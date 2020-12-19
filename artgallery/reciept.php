@@ -26,26 +26,26 @@ while($elem=mysqli_fetch_assoc($query)){
 
 
 <div class="container p-5 ">
-  <div class="container-fluid p-5  shadow-lg border-0 rounded-lg mt-5">
+  <div class="container-fluid p-5  shadow-lg border-3 rounded-lg mt-5">
         <div class=" justify-content-center bg-light p-5 mx-5">
-             <h2 class="text-center">RECIEPT</h2>
-             <div class="container-fluid ">
+             <h2 class="text-center">Purchase Reciept</h2>
+             <div class="container-fluid border-2">
                 <form action="explore.php" method="POST" class="justify-content-center">
 
-                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                <label> Buyer name:<?php echo $_SESSION['uname']?> </label>   
+                <div class=" d-flex text-center justify-content-between mt-4 mb-0">
+                <label> Buyer name: </label>  <?php echo $_SESSION['uname']?> 
                 </div>
 
                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                <label> Art name:<?php echo $name?> </label>   
+                <label> Art name: </label><?php echo $name?>   
                 </div>
                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                <label> Art price:<?php echo $price?> </label>   
+                <label> Art price:</label> <?php echo $price?>   
                 </div> 
                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                <label> Created on:<?php echo $year?> </label>   
+                <label> Created on:</label> <?php echo $year?>   
                 </div> 
-                 <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                 <div class="form-group d-flex justify-content-between mt-4 mb-0">
                   <!-- <button type="reset" class="btn btn-danger " name="reset"  href="#"> Reset</button> -->
                   <button type="submit" class="btn btn-primary " name="<?php echo $j?>">Confirm</button>
                  </div>
